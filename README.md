@@ -1,1 +1,3 @@
 # org.dang.utils
+
+Here some less or more useful utility classes and methods...
