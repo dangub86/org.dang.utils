@@ -96,4 +96,31 @@ public class SpringBootVuejsApplication {
 		LocalDate easter = Easter4J.getEaster(year);
 		System.out.println("EASTER FOR " + year + " -> " + easter);
 	}
+	
+	
+	
+	
+		@Bean
+	public void testDuration() {
+		LocalDateTime start = LocalDateTime.now();
+		LocalDateTime end = start.plusDays(3).plusHours(8).plusMinutes(43).plusSeconds(27);
+		Duration diff = Duration.between(start, end);
+		System.out.println("DURATION -> " + printDuration(diff));
+	}
+
+	private String printDuration(Duration diff) {
+		return "PT" + diff.toDays() + "D" + toHours(diff) + "H" + toMinutes(diff) + "M" + toSeconds(diff) + "S";
+	}
+
+	private int toHours(Duration diff) {
+		return (int) (diff.toHours() % 24);
+	}
+
+	private int toMinutes(Duration diff) {
+		return (int) (diff.toMinutes() % 60);
+	}
+
+	private int toSeconds(Duration diff) {
+		return (int) (diff.getSeconds() % 60);
+	}
 }
